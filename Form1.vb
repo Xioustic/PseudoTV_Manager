@@ -447,13 +447,30 @@ Public Class Form1
         Dim x As Integer = ListTVBanners.SelectedIndex
 
         TVBannerPictureBox.ImageLocation = ListTVBanners.Items(x)
+        TVBannerPictureBox.Refresh()
 
     End Sub
+    Private Sub TVBannerSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TVBannerSelect.Click
+        Dim x As Integer = ListTVBanners.SelectedIndex
+        Dim Type As String = "tvshow"
+        Dim MediaType As String = "banner"
 
+        DbExecute("UPDATE art SET url = '" & ListTVBanners.Items(x).ToString & "' WHERE media_id = '" & TVShowLabel.Text & "' and type = '" & Type & "' and type = '" & MediaType & "'")
+        Status.Text = "Updated " & TxtShowName.Text & " Successfully with " & ListTVBanners.Items(x).ToString & ""
+    End Sub
     Private Sub ListTVPosters_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListTVPosters.SelectedIndexChanged
         Dim x As Integer = ListTVPosters.SelectedIndex
 
         TVPosterPictureBox.ImageLocation = ListTVPosters.Items(x)
+        TVPosterPictureBox.Refresh()
+
+    End Sub
+    Private Sub TVPosterSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TVPosterSelect.Click
+        Dim x As Integer = ListTVPosters.SelectedIndex
+        Dim MediaType As String = "poster"
+
+        DbExecute("UPDATE art SET url = '" & ListTVPosters.Items(x).ToString & "' WHERE media_id = '" & TVShowLabel.Text & "' and type = '" & MediaType & "'")
+        Status.Text = "Updated " & TxtShowName.Text & " Successfully with " & ListTVPosters.Items(x).ToString & ""
 
     End Sub
 
@@ -502,7 +519,7 @@ Public Class Form1
             Dim TVPoster As String = ReturnArraySplit(4)
             ListTVPosters.Items.Clear()
 
-            If InStr(TVPoster, "<thumb aspect=""poster"">http:/") > 0 Then
+            If InStr(TVPoster, "<thumb aspect=""poster""") > 0 Then
                 Dim TVPosterSplit() As String = Split(TVPoster, "<thumb aspect=""poster"">")
 
                 For X = 1 To UBound(TVPosterSplit)
@@ -517,7 +534,7 @@ Public Class Form1
             Dim TVBanner As String = ReturnArraySplit(4)
             ListTVBanners.Items.Clear()
 
-            If InStr(TVBanner, "<thumb aspect=""banner"">http:/") > 0 Then
+            If InStr(TVBanner, "<thumb aspect=""banner""") > 0 Then
                 Dim TVBannerSplit() As String = Split(TVBanner, "<thumb aspect=""banner"">")
 
                 For X = 1 To UBound(TVBannerSplit)
@@ -547,13 +564,21 @@ Public Class Form1
                     txtShowLocation.Text = "//" & txtShowLocation.Text.Substring(6)
                 End If
             End If
+            
+            If ListTVPosters.Items.Count <= 0 Or ListTVBanners.Items.Count <= 0 Then
+                TVPosterPictureBox.ImageLocation = "http://www.kickoff.com/chops/images/resized/large/no-image-found.jpg"
+                TVBannerPictureBox.ImageLocation = "http://www.kickoff.com/chops/images/resized/large/no-image-found.jpg"
+            ElseIf ListTVPosters.Items.Count > 0 And ListTVBanners.Items.Count > 0 Then
 
-            TVPosterPictureBox.ImageLocation = ListTVPosters.Items(0)
-            TVBannerPictureBox.ImageLocation = ListTVBanners.Items(0)
+                TVPosterPictureBox.ImageLocation = ListTVPosters.Items(0)
+                TVBannerPictureBox.ImageLocation = ListTVBanners.Items(0)
 
-
+            End If
         End If
     End Sub
+
+
+
     Public Function ConvertGenres(ByVal Genrelist As ListBox)
         'Converts the existing ListTVGenre's contents to the proper format.
 
@@ -1633,8 +1658,8 @@ Public Class Form1
                 rulecount = rulecount + 1
                 AppendInfo = AppendInfo & vbCrLf & vbTab & "<setting id=" & Chr(34) & "Channel_" & ChannelNum & "_rule_" & rulecount & "_id" & Chr(34) & " value=" & Chr(34) & "4" & Chr(34) & " />"
             End If
-            
-            'IceLibrary Support?
+
+            'Exclude Strms?
             '<setting id="Channel_1_rule_1_id" value="14" />
             If ChkIceLibrary.Checked = True Then
                 rulecount = rulecount + 1
@@ -1657,9 +1682,6 @@ Public Class Form1
                 AppendInfo = AppendInfo & vbCrLf & vbTab & "<setting id=" & Chr(34) & "Channel_" & ChannelNum & "_rule_" & rulecount & "_id" & Chr(34) & " value=" & Chr(34) & "18" & Chr(34) & " />"
                 AppendInfo = AppendInfo & vbCrLf & vbTab & "<setting id=" & Chr(34) & "Channel_" & ChannelNum & "_rule_" & rulecount & "_opt_1" & Chr(34) & " value=" & Chr(34) & "No" & Chr(34) & " />"
             End If
-
-
-
 
             'Pause when not watching
             '<setting id="Channel_1_rule_1_id" value="8" />
@@ -1942,6 +1964,24 @@ Public Class Form1
 
     End Sub
 
+    Private Sub ListMoviePosters_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListMoviePosters.SelectedIndexChanged
+        Dim x As Integer = ListMoviePosters.SelectedIndex
+
+        MoviePicture.ImageLocation = ListMoviePosters.Items(x)
+        MoviePicture.Refresh()
+
+    End Sub
+
+    Private Sub MoviePosterSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MoviePosterSelect.Click
+        Dim x As Integer = ListMoviePosters.SelectedIndex
+        Dim Type As String = "poster"
+        Dim MediaType As String = "movie"
+
+        DbExecute("UPDATE art SET url = '" & ListMoviePosters.Items(x).ToString & "' WHERE media_id = '" & MovieIDLabel.Text & "' and media_type = '" & MediaType & "' and type = '" & Type & "'")
+        Status.Text = "Updated " & MovieLabel.Text & " " & MovieIDLabel.Text & " Successfully with " & ListMoviePosters.Items(x).ToString & ""
+
+    End Sub
+
     Private Sub MovieList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MovieList.SelectedIndexChanged
         If MovieList.SelectedItems.Count > 0 Then
 
@@ -1953,6 +1993,8 @@ Public Class Form1
 
             MovieID = ListItem.SubItems(1).Text
             MovieName = ListItem.SubItems(0).Text
+            MovieIDLabel.Text = MovieID
+
 
             Dim SelectArray(3)
             SelectArray(0) = 16
@@ -2015,8 +2057,11 @@ Public Class Form1
                 End If
             End If
 
-
-            MoviePicture.ImageLocation = ListMoviePosters.Items(0)
+            If ListMoviePosters.Items.Count > 0 Then
+                MoviePicture.ImageLocation = ListMoviePosters.Items(0)
+            ElseIf ListMoviePosters.Items.Count <= 0 Then
+                MoviePicture.ImageLocation = "http://netflixroulette.files.wordpress.com/2013/01/image-not-found.gif"
+            End If
 
 
         End If
@@ -2280,6 +2325,10 @@ Public Class Form1
     End Sub
 
     Private Sub TxtShowName_TextChanged(sender As Object, e As EventArgs) Handles TxtShowName.TextChanged
+
+    End Sub
+
+    Private Sub TabPage6_Click(sender As Object, e As EventArgs) Handles TabPage6.Click
 
     End Sub
 End Class
