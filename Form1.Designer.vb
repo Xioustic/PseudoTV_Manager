@@ -148,6 +148,8 @@ Partial Class Form1
         Me.AaaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.AddBanner = New System.Windows.Forms.Button()
+        Me.AddPoster = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.TVBannerPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -185,6 +187,8 @@ Partial Class Form1
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.Gray
+        Me.TabPage1.Controls.Add(Me.AddPoster)
+        Me.TabPage1.Controls.Add(Me.AddBanner)
         Me.TabPage1.Controls.Add(Me.TVPosterSelect)
         Me.TabPage1.Controls.Add(Me.TVBannerSelect)
         Me.TabPage1.Controls.Add(Me.TVBannerPictureBox)
@@ -218,20 +222,20 @@ Partial Class Form1
         '
         'TVPosterSelect
         '
-        Me.TVPosterSelect.Location = New System.Drawing.Point(311, 612)
+        Me.TVPosterSelect.Location = New System.Drawing.Point(235, 612)
         Me.TVPosterSelect.Name = "TVPosterSelect"
         Me.TVPosterSelect.Size = New System.Drawing.Size(107, 23)
         Me.TVPosterSelect.TabIndex = 25
-        Me.TVPosterSelect.Text = "Select for XBMC"
+        Me.TVPosterSelect.Text = "Select for PTVL"
         Me.TVPosterSelect.UseVisualStyleBackColor = True
         '
         'TVBannerSelect
         '
-        Me.TVBannerSelect.Location = New System.Drawing.Point(311, 422)
+        Me.TVBannerSelect.Location = New System.Drawing.Point(243, 422)
         Me.TVBannerSelect.Name = "TVBannerSelect"
         Me.TVBannerSelect.Size = New System.Drawing.Size(107, 23)
         Me.TVBannerSelect.TabIndex = 24
-        Me.TVBannerSelect.Text = "Select for XBMC"
+        Me.TVBannerSelect.Text = "Select for PTVL"
         Me.TVBannerSelect.UseVisualStyleBackColor = True
         '
         'TVBannerPictureBox
@@ -246,9 +250,9 @@ Partial Class Form1
         'ListTVBanners
         '
         Me.ListTVBanners.FormattingEnabled = True
-        Me.ListTVBanners.Location = New System.Drawing.Point(235, 298)
+        Me.ListTVBanners.Location = New System.Drawing.Point(237, 298)
         Me.ListTVBanners.Name = "ListTVBanners"
-        Me.ListTVBanners.Size = New System.Drawing.Size(270, 121)
+        Me.ListTVBanners.Size = New System.Drawing.Size(349, 121)
         Me.ListTVBanners.TabIndex = 22
         '
         'Label20
@@ -290,9 +294,9 @@ Partial Class Form1
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(610, 68)
+        Me.Button6.Location = New System.Drawing.Point(610, 73)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(33, 29)
+        Me.Button6.Size = New System.Drawing.Size(29, 24)
         Me.Button6.TabIndex = 17
         Me.Button6.Text = "..."
         Me.Button6.UseVisualStyleBackColor = True
@@ -328,7 +332,7 @@ Partial Class Form1
         'ListTVGenres
         '
         Me.ListTVGenres.FormattingEnabled = True
-        Me.ListTVGenres.Location = New System.Drawing.Point(235, 160)
+        Me.ListTVGenres.Location = New System.Drawing.Point(238, 163)
         Me.ListTVGenres.Name = "ListTVGenres"
         Me.ListTVGenres.Size = New System.Drawing.Size(282, 108)
         Me.ListTVGenres.TabIndex = 13
@@ -402,7 +406,7 @@ Partial Class Form1
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!)
-        Me.Label2.Location = New System.Drawing.Point(231, 133)
+        Me.Label2.Location = New System.Drawing.Point(234, 136)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(72, 24)
         Me.Label2.TabIndex = 3
@@ -465,18 +469,18 @@ Partial Class Form1
         '
         'MoviePosterSelect
         '
-        Me.MoviePosterSelect.Location = New System.Drawing.Point(247, 611)
+        Me.MoviePosterSelect.Location = New System.Drawing.Point(249, 496)
         Me.MoviePosterSelect.Name = "MoviePosterSelect"
         Me.MoviePosterSelect.Size = New System.Drawing.Size(107, 23)
         Me.MoviePosterSelect.TabIndex = 28
-        Me.MoviePosterSelect.Text = "Select for XBMC"
+        Me.MoviePosterSelect.Text = "Select for PTVL"
         Me.MoviePosterSelect.UseVisualStyleBackColor = True
         '
         'Label19
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.25!)
-        Me.Label19.Location = New System.Drawing.Point(237, 413)
+        Me.Label19.Location = New System.Drawing.Point(242, 298)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(174, 29)
         Me.Label19.TabIndex = 27
@@ -486,7 +490,7 @@ Partial Class Form1
         'ListMoviePosters
         '
         Me.ListMoviePosters.FormattingEnabled = True
-        Me.ListMoviePosters.Location = New System.Drawing.Point(242, 445)
+        Me.ListMoviePosters.Location = New System.Drawing.Point(244, 330)
         Me.ListMoviePosters.Name = "ListMoviePosters"
         Me.ListMoviePosters.Size = New System.Drawing.Size(285, 160)
         Me.ListMoviePosters.TabIndex = 26
@@ -512,7 +516,7 @@ Partial Class Form1
         '
         'Button17
         '
-        Me.Button17.Location = New System.Drawing.Point(247, 361)
+        Me.Button17.Location = New System.Drawing.Point(249, 265)
         Me.Button17.Name = "Button17"
         Me.Button17.Size = New System.Drawing.Size(84, 30)
         Me.Button17.TabIndex = 23
@@ -531,7 +535,7 @@ Partial Class Form1
         '
         'MovieLocation
         '
-        Me.MovieLocation.Location = New System.Drawing.Point(247, 94)
+        Me.MovieLocation.Location = New System.Drawing.Point(247, 81)
         Me.MovieLocation.Name = "MovieLocation"
         Me.MovieLocation.Size = New System.Drawing.Size(282, 20)
         Me.MovieLocation.TabIndex = 21
@@ -547,7 +551,7 @@ Partial Class Form1
         '
         'Button15
         '
-        Me.Button15.Location = New System.Drawing.Point(490, 145)
+        Me.Button15.Location = New System.Drawing.Point(492, 114)
         Me.Button15.Name = "Button15"
         Me.Button15.Size = New System.Drawing.Size(39, 21)
         Me.Button15.TabIndex = 19
@@ -556,7 +560,7 @@ Partial Class Form1
         '
         'Button16
         '
-        Me.Button16.Location = New System.Drawing.Point(445, 145)
+        Me.Button16.Location = New System.Drawing.Point(447, 114)
         Me.Button16.Name = "Button16"
         Me.Button16.Size = New System.Drawing.Size(39, 21)
         Me.Button16.TabIndex = 18
@@ -566,16 +570,16 @@ Partial Class Form1
         'MovieGenresList
         '
         Me.MovieGenresList.FormattingEnabled = True
-        Me.MovieGenresList.Location = New System.Drawing.Point(245, 169)
+        Me.MovieGenresList.Location = New System.Drawing.Point(247, 138)
         Me.MovieGenresList.Name = "MovieGenresList"
-        Me.MovieGenresList.Size = New System.Drawing.Size(282, 186)
+        Me.MovieGenresList.Size = New System.Drawing.Size(282, 121)
         Me.MovieGenresList.TabIndex = 17
         '
         'Label13
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(242, 137)
+        Me.Label13.Location = New System.Drawing.Point(244, 106)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(92, 29)
         Me.Label13.TabIndex = 16
@@ -1420,7 +1424,7 @@ Partial Class Form1
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Location = New System.Drawing.Point(1, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.MenuStrip1.Size = New System.Drawing.Size(45, 24)
@@ -1447,6 +1451,24 @@ Partial Class Form1
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
+        'AddBanner
+        '
+        Me.AddBanner.Location = New System.Drawing.Point(547, 422)
+        Me.AddBanner.Name = "AddBanner"
+        Me.AddBanner.Size = New System.Drawing.Size(39, 21)
+        Me.AddBanner.TabIndex = 26
+        Me.AddBanner.Text = "Add"
+        Me.AddBanner.UseVisualStyleBackColor = True
+        '
+        'AddPoster
+        '
+        Me.AddPoster.Location = New System.Drawing.Point(547, 612)
+        Me.AddPoster.Name = "AddPoster"
+        Me.AddPoster.Size = New System.Drawing.Size(39, 21)
+        Me.AddPoster.TabIndex = 27
+        Me.AddPoster.Text = "Add"
+        Me.AddPoster.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -1611,5 +1633,7 @@ Partial Class Form1
     Friend WithEvents YouTubeUrlLabel As System.Windows.Forms.Label
     Friend WithEvents YouTubeThumbnailUrlBox As System.Windows.Forms.TextBox
     Friend WithEvents YouTubeThumbnailUrlLabel As System.Windows.Forms.Label
+    Friend WithEvents AddPoster As System.Windows.Forms.Button
+    Friend WithEvents AddBanner As System.Windows.Forms.Button
 
 End Class

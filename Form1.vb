@@ -446,25 +446,48 @@ Public Class Form1
     Private Sub ListTVBanners_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListTVBanners.SelectedIndexChanged
         Dim x As Integer = ListTVBanners.SelectedIndex
 
-        If ListTVBanners.Items.Count = 0 Then
-            TVBannerPictureBox.ImageLocation = "http://www.kickoff.com/chops/images/resized/large/no-image-found.jpg"
+        If ListTVBanners.Items.Count <= 0 Then
+            TVBannerPictureBox.ImageLocation = "https://github.com/Lunatixz/script.pseudotv.live/raw/development/resources/images/banner.png"
         Else
             TVBannerPictureBox.ImageLocation = ListTVBanners.Items(x)
             TVBannerPictureBox.Refresh()
         End If
     End Sub
+
     Private Sub TVBannerSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TVBannerSelect.Click
         Dim x As Integer = ListTVBanners.SelectedIndex
         Dim Type As String = "tvshow"
         Dim MediaType As String = "banner"
 
+
+        If txtShowLocation.TextLength >= 6 Then
+            If txtShowLocation.Text.Substring(0, 6) = "smb://" Then
+                txtShowLocation.Text = txtShowLocation.Text.Replace("/", "\")
+                txtShowLocation.Text = "\\" & txtShowLocation.Text.Substring(6)
+            End If
+        End If
+
+        ' Displays a SaveFileDialog so the user can save the Image
+        ' assigned to TVBannerSelect.
+        Dim saveFileDialog1 As New SaveFileDialog()
+        saveFileDialog1.InitialDirectory = txtShowLocation.Text
+        saveFileDialog1.Filter = "JPeg Image|*.jpg"
+        saveFileDialog1.Title = "Save an Image File"
+        saveFileDialog1.FileName = "banner.jpg"
+        saveFileDialog1.ShowDialog()
+
+        Dim FileToSaveAs As String = System.IO.Path.Combine(txtShowLocation.Text, saveFileDialog1.FileName)
+        TVBannerPictureBox.Image.Save(FileToSaveAs, System.Drawing.Imaging.ImageFormat.Jpeg)
+
         DbExecute("UPDATE art SET url = '" & ListTVBanners.Items(x).ToString & "' WHERE media_id = '" & TVShowLabel.Text & "' and type = '" & Type & "' and type = '" & MediaType & "'")
         Status.Text = "Updated " & TxtShowName.Text & " Successfully with " & ListTVBanners.Items(x).ToString & ""
     End Sub
+
     Private Sub ListTVPosters_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListTVPosters.SelectedIndexChanged
         Dim x As Integer = ListTVPosters.SelectedIndex
+
         If ListTVPosters.Items.Count = 0 Then
-            TVPosterPictureBox.ImageLocation = "http://www.kickoff.com/chops/images/resized/large/no-image-found.jpg"
+            TVPosterPictureBox.ImageLocation = "https://github.com/Lunatixz/script.pseudotv.live/raw/development/resources/images/poster.png"
         Else
             TVPosterPictureBox.ImageLocation = ListTVPosters.Items(x)
             TVPosterPictureBox.Refresh()
@@ -474,6 +497,26 @@ Public Class Form1
     Private Sub TVPosterSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TVPosterSelect.Click
         Dim x As Integer = ListTVPosters.SelectedIndex
         Dim MediaType As String = "poster"
+
+
+        If txtShowLocation.TextLength >= 6 Then
+            If txtShowLocation.Text.Substring(0, 6) = "smb://" Then
+                txtShowLocation.Text = txtShowLocation.Text.Replace("/", "\")
+                txtShowLocation.Text = "\\" & txtShowLocation.Text.Substring(6)
+            End If
+        End If
+
+        ' Displays a SaveFileDialog so the user can save the Image
+        ' assigned to TVPosterSelect.
+        Dim saveFileDialog1 As New SaveFileDialog()
+        saveFileDialog1.InitialDirectory = txtShowLocation.Text
+        saveFileDialog1.Filter = "JPeg Image|*.jpg"
+        saveFileDialog1.Title = "Save an Image File"
+        saveFileDialog1.FileName = "poster.jpg"
+        saveFileDialog1.ShowDialog()
+
+        Dim FileToSaveAs As String = System.IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.Temp, saveFileDialog1.FileName)
+        TVPosterPictureBox.Image.Save(FileToSaveAs, System.Drawing.Imaging.ImageFormat.Jpeg)
 
         DbExecute("UPDATE art SET url = '" & ListTVPosters.Items(x).ToString & "' WHERE media_id = '" & TVShowLabel.Text & "' and type = '" & MediaType & "'")
         Status.Text = "Updated " & TxtShowName.Text & " Successfully with " & ListTVPosters.Items(x).ToString & ""
@@ -525,6 +568,9 @@ Public Class Form1
             Dim TVPoster As String = ReturnArraySplit(4)
             ListTVPosters.Items.Clear()
 
+            Dim TVBanner As String = ReturnArraySplit(4)
+            ListTVBanners.Items.Clear()
+
             If InStr(TVPoster, "<thumb aspect=""poster"">") > 0 Then
                 Dim TVPosterSplit() As String = Split(TVPoster, "<thumb aspect=""poster"">")
 
@@ -533,12 +579,9 @@ Public Class Form1
                     TVPosterSplit(X) = TVPosterSplit(X).Substring(i + 1, TVPosterSplit(X).IndexOf("</thumb>"))
                     ListTVPosters.Items.Add(TVPosterSplit(X))
                 Next
-            ElseIf TVPoster <> "" Then
-                ListTVPosters.Items.Add(TVPoster)
+            Else
+                ListTVPosters.Items.Add("Nothing Found")
             End If
-
-            Dim TVBanner As String = ReturnArraySplit(4)
-            ListTVBanners.Items.Clear()
 
             If InStr(TVBanner, "<thumb aspect=""banner"">") > 0 Then
                 Dim TVBannerSplit() As String = Split(TVBanner, "<thumb aspect=""banner"">")
@@ -548,8 +591,8 @@ Public Class Form1
                     TVBannerSplit(X) = TVBannerSplit(X).Substring(i + 1, TVBannerSplit(X).IndexOf("</thumb>"))
                     ListTVBanners.Items.Add(TVBannerSplit(X))
                 Next
-            ElseIf TVBanner <> "" Then
-                ListTVBanners.Items.Add(TVBanner)
+            Else
+                ListTVBanners.Items.Add("Nothing Found")
             End If
 
             'Loop through each TV Genre, if there more than one.
@@ -567,29 +610,82 @@ Public Class Form1
 
             If txtShowLocation.TextLength >= 6 Then
                 If txtShowLocation.Text.Substring(0, 6) = "smb://" Then
-                    txtShowLocation.Text = "//" & txtShowLocation.Text.Substring(6)
+                    txtShowLocation.Text = txtShowLocation.Text.Replace("/", "\")
+                    txtShowLocation.Text = "\\" & txtShowLocation.Text.Substring(6)
                 End If
             End If
 
-            If ListTVPosters.Items.Count <= 0 Then
-                TVPosterPictureBox.ImageLocation = "http://www.kickoff.com/chops/images/resized/large/no-image-found.jpg"
 
+
+            If System.IO.File.Exists(txtShowLocation.Text & "poster.jpg") Then
+                TVPosterPictureBox.ImageLocation = txtShowLocation.Text & "poster.jpg"
             Else
-                TVPosterPictureBox.ImageLocation = ListTVPosters.Items(0)
-                TVPosterPictureBox.Refresh()
+                TVPosterPictureBox.ImageLocation = "https://github.com/Lunatixz/script.pseudotv.live/raw/development/resources/images/poster.png"
             End If
 
-            If ListTVBanners.Items.Count <= 0 Then
-                TVBannerPictureBox.ImageLocation = "http://www.kickoff.com/chops/images/resized/large/no-image-found.jpg"
+            If System.IO.File.Exists(txtShowLocation.Text & "banner.jpg") Then
+                TVBannerPictureBox.ImageLocation = txtShowLocation.Text & "banner.jpg"
             Else
-                TVBannerPictureBox.ImageLocation = ListTVBanners.Items(0)
-                TVBannerPictureBox.Refresh()
+                TVBannerPictureBox.ImageLocation = "https://github.com/Lunatixz/script.pseudotv.live/raw/development/resources/images/banner.png"
             End If
         End If
 
     End Sub
 
+    Private Sub Form9_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load, AddBanner.Click
 
+    End Sub
+
+
+    Public Function ConvertGenres(ByVal Genrelist As ListBox)
+        'Converts the existing ListTVGenre's contents to the proper format.
+
+        Dim TVGenresString As String = ""
+        For x = 0 To Genrelist.Items.Count - 1
+            If x = 0 Then
+                TVGenresString = Genrelist.Items(x).ToString
+            Else
+                TVGenresString = TVGenresString & " / " & Genrelist.Items(x).ToString
+            End If
+        Next
+
+        Return TVGenresString
+    End Function
+    Private Sub TVShowList_ColumnClick(ByVal sender As Object, ByVal e As System.Windows.Forms.ColumnClickEventArgs) Handles TVShowList.ColumnClick
+        ' Get the new sorting column. 
+        Dim new_sorting_column As ColumnHeader = TVShowList.Columns(e.Column)
+        ' Figure out the new sorting order. 
+        Dim sort_order As System.Windows.Forms.SortOrder
+        If m_SortingColumn Is Nothing Then
+            ' New column. Sort ascending. 
+            sort_order = SortOrder.Ascending
+        Else ' See if this is the same column. 
+            If new_sorting_column.Equals(m_SortingColumn) Then
+                ' Same column. Switch the sort order. 
+                If m_SortingColumn.Text.StartsWith("> ") Then
+                    sort_order = SortOrder.Descending
+                Else
+                    sort_order = SortOrder.Ascending
+                End If
+            Else
+                ' New column. Sort ascending. 
+                sort_order = SortOrder.Ascending
+            End If
+            ' Remove the old sort indicator. 
+            m_SortingColumn.Text = m_SortingColumn.Text.Substring(2)
+        End If
+        ' Display the new sort order. 
+        m_SortingColumn = new_sorting_column
+        If sort_order = SortOrder.Ascending Then
+            m_SortingColumn.Text = "> " & m_SortingColumn.Text
+        Else
+            m_SortingColumn.Text = "< " & m_SortingColumn.Text
+        End If
+        ' Create a comparer. 
+        TVShowList.ListViewItemSorter = New clsListviewSorter(e.Column, sort_order)
+        ' Sort. 
+        TVShowList.Sort()
+    End Sub
 
     Public Function ConvertGenres(ByVal Genrelist As ListBox)
         'Converts the existing ListTVGenre's contents to the proper format.
@@ -760,6 +856,8 @@ Public Class Form1
             TxtShowName.Text = ""
             txtShowLocation.Text = ""
             TVPosterPictureBox.ImageLocation = ""
+            MovieLocation.Text = ""
+            MoviePicture.ImageLocation = ""
         End If
     End Sub
 
@@ -1989,10 +2087,34 @@ Public Class Form1
         Dim Type As String = "poster"
         Dim MediaType As String = "movie"
 
+
+        If MovieLocation.TextLength >= 6 Then
+            If MovieLocation.Text.Substring(0, 6) = "smb://" Then
+                MovieLocation.Text = MovieLocation.Text.Replace("/", "\")
+                MovieLocation.Text = "\\" & MovieLocation.Text.Substring(6)
+            End If
+        End If
+
+        Dim directoryName As String = ""
+        directoryName = Path.GetDirectoryName(MovieLocation.Text)
+
+        ' Displays a SaveFileDialog so the user can save the Image
+        ' assigned to TVPosterSelect.
+        Dim saveFileDialog1 As New SaveFileDialog()
+        saveFileDialog1.InitialDirectory = directoryName
+        saveFileDialog1.Filter = "JPeg Image|*.jpg"
+        saveFileDialog1.Title = "Save an Image File"
+        saveFileDialog1.FileName = "poster.jpg"
+        saveFileDialog1.ShowDialog()
+
+        Dim FileToSaveAs As String = System.IO.Path.Combine(saveFileDialog1.InitialDirectory, saveFileDialog1.FileName)
+        MoviePicture.Image.Save(FileToSaveAs, System.Drawing.Imaging.ImageFormat.Jpeg)
+
         DbExecute("UPDATE art SET url = '" & ListMoviePosters.Items(x).ToString & "' WHERE media_id = '" & MovieIDLabel.Text & "' and media_type = '" & MediaType & "' and type = '" & Type & "'")
         Status.Text = "Updated " & MovieLabel.Text & " " & MovieIDLabel.Text & " Successfully with " & ListMoviePosters.Items(x).ToString & ""
 
     End Sub
+
 
     Private Sub MovieList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MovieList.SelectedIndexChanged
         If MovieList.SelectedItems.Count > 0 Then
@@ -2043,8 +2165,8 @@ Public Class Form1
                     MoviePosterSplit(X) = MoviePosterSplit(X).Substring(i + 1, MoviePosterSplit(X).IndexOf("</thumb>"))
                     ListMoviePosters.Items.Add(MoviePosterSplit(X))
                 Next
-            ElseIf MoviePoster <> "" Then
-                ListMoviePosters.Items.Add(MoviePoster)
+            Else
+                ListMoviePosters.Items.Add("Nothing Found")
             End If
 
 
@@ -2072,21 +2194,27 @@ Public Class Form1
                 MovieGenresList.Items.Add(MovieGenres)
             End If
 
+
             If MovieLocation.TextLength >= 6 Then
                 If MovieLocation.Text.Substring(0, 6) = "smb://" Then
-                    MovieLocation.Text = "//" & MovieLocation.Text.Substring(6)
+                    MovieLocation.Text = MovieLocation.Text.Replace("/", "\")
+                    MovieLocation.Text = "\\" & MovieLocation.Text.Substring(6)
                 End If
             End If
 
-            If ListMoviePosters.Items.Count > 0 Then
-                MoviePicture.ImageLocation = ListMoviePosters.Items(0)
-            ElseIf ListMoviePosters.Items.Count <= 0 Then
-                MoviePicture.ImageLocation = "http://netflixroulette.files.wordpress.com/2013/01/image-not-found.gif"
-            End If
+            Dim directoryName As String = ""
+            directoryName = Path.GetDirectoryName(MovieLocation.Text)
 
+            If System.IO.File.Exists(directoryName & "\" & "poster.jpg") Then
+                MoviePicture.ImageLocation = (directoryName & "\" & "poster.jpg")
+            Else
+                MoviePicture.ImageLocation = "https://github.com/Lunatixz/script.pseudotv.live/raw/development/resources/images/poster.png"
+            End If
 
         End If
     End Sub
+
+
 
     Private Sub Button16_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button16.Click
         Form7.Visible = True
@@ -2351,5 +2479,15 @@ Public Class Form1
 
     Private Sub TabPage6_Click(sender As Object, e As EventArgs) Handles TabPage6.Click
 
+    End Sub
+
+    Private Sub TVPosterPictureBox_Click(sender As Object, e As EventArgs) Handles TVPosterPictureBox.Click
+
+    End Sub
+
+    Private Sub AddBanner_Click(sender As Object, e As EventArgs) Handles AddBanner.Click
+        Form9.Visible = True
+        Form9.Focus()
+        Form9.AddBannerPictureBox.ImageLocation = "http://github.com/Lunatixz/script.pseudotv.live/raw/development/resources/images/banner.png"
     End Sub
 End Class
