@@ -1,6 +1,5 @@
-﻿Imports System.IO
-Imports System.Drawing
-Public Class Form9
+﻿Public Class Form9
+
     Public TVShowID As String = ""
     Public TVBanner As String = ""
     Private Sub AddBanner_Click(sender As Object, e As EventArgs) Handles Me.Click
@@ -11,9 +10,11 @@ Public Class Form9
 
     Public Sub AddBannerViewButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles AddBannerViewButton.Click
 
-        Dim UrlPoster As String = AddBannerInputBox.Text
-
-        AddBannerPictureBox.Load(UrlPoster)
+        Dim UrlBanner As String = AddBannerInputBox.Text
+        AddBannerInfo.Visible = False
+        AddBannerAddButton.Visible = True
+        AddBannerPictureBox.Visible = True
+        AddBannerPictureBox.Load(UrlBanner)
         AddBannerPictureBox.Refresh()
 
         Dim ListItem As ListViewItem
@@ -28,7 +29,6 @@ Public Class Form9
         Dim ReturnArraySplit() As String = DbReadRecord(Form1.VideoDatabaseLocation, "SELECT * FROM tvshow WHERE idShow='" & TVShowID & "'", SelectArray)
 
         TVBanner = ReturnArraySplit(0)
-        AddBannerReturnString.Text = Form1.txtShowLocation.Text
 
     End Sub
 
@@ -68,6 +68,10 @@ Public Class Form9
     End Sub
 
     Private Sub AddBannerPictureBox_Click(sender As Object, e As EventArgs) Handles AddBannerPictureBox.Click
+
+    End Sub
+
+    Private Sub AddBannerInfo_Click(sender As Object, e As EventArgs) Handles AddBannerInfo.Click
 
     End Sub
 End Class

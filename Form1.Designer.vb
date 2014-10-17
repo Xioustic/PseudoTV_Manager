@@ -25,6 +25,8 @@ Partial Class Form1
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.AddPoster = New System.Windows.Forms.Button()
+        Me.AddBanner = New System.Windows.Forms.Button()
         Me.TVPosterSelect = New System.Windows.Forms.Button()
         Me.TVBannerSelect = New System.Windows.Forms.Button()
         Me.TVBannerPictureBox = New System.Windows.Forms.PictureBox()
@@ -50,6 +52,7 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TVShowList = New System.Windows.Forms.ListView()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.AddMoviePosterButton = New System.Windows.Forms.Button()
         Me.MoviePosterSelect = New System.Windows.Forms.Button()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.ListMoviePosters = New System.Windows.Forms.ListBox()
@@ -79,11 +82,12 @@ Partial Class Form1
         Me.GenresListSubList = New System.Windows.Forms.ListBox()
         Me.GenresList = New System.Windows.Forms.ListView()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.GDataDemoLink = New System.Windows.Forms.LinkLabel()
+        Me.SubChannelType = New System.Windows.Forms.ComboBox()
         Me.SortTypeBox = New System.Windows.Forms.ComboBox()
         Me.SortType = New System.Windows.Forms.Label()
         Me.MediaLimitBox = New System.Windows.Forms.ComboBox()
         Me.MediaLimit = New System.Windows.Forms.Label()
-        Me.RefreshButton = New System.Windows.Forms.Button()
         Me.ShowDescBox = New System.Windows.Forms.TextBox()
         Me.ShowDesc = New System.Windows.Forms.Label()
         Me.ShowTitleBox = New System.Windows.Forms.TextBox()
@@ -134,22 +138,14 @@ Partial Class Form1
         Me.Label5 = New System.Windows.Forms.Label()
         Me.PlayListType = New System.Windows.Forms.ComboBox()
         Me.TVGuideList = New System.Windows.Forms.ListView()
-        Me.TabPage6 = New System.Windows.Forms.TabPage()
-        Me.YouTubeThumbnailUrlBox = New System.Windows.Forms.TextBox()
-        Me.YouTubeThumbnailUrlLabel = New System.Windows.Forms.Label()
-        Me.YouTubeArtistBox = New System.Windows.Forms.TextBox()
-        Me.YouTubeArtistLabel = New System.Windows.Forms.Label()
-        Me.YouTubeUrlBox = New System.Windows.Forms.TextBox()
-        Me.YouTubeUrlLabel = New System.Windows.Forms.Label()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.Status = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AaaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.AddBanner = New System.Windows.Forms.Button()
-        Me.AddPoster = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.TVBannerPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -160,7 +156,6 @@ Partial Class Form1
         Me.TabPage3.SuspendLayout()
         Me.TabPage4.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
-        Me.TabPage6.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -175,7 +170,6 @@ Partial Class Form1
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage4)
-        Me.TabControl1.Controls.Add(Me.TabPage6)
         Me.TabControl1.Location = New System.Drawing.Point(0, 27)
         Me.TabControl1.MaximumSize = New System.Drawing.Size(1000, 900)
         Me.TabControl1.MinimumSize = New System.Drawing.Size(1000, 688)
@@ -220,22 +214,40 @@ Partial Class Form1
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TV Shows"
         '
+        'AddPoster
+        '
+        Me.AddPoster.Location = New System.Drawing.Point(547, 612)
+        Me.AddPoster.Name = "AddPoster"
+        Me.AddPoster.Size = New System.Drawing.Size(39, 21)
+        Me.AddPoster.TabIndex = 27
+        Me.AddPoster.Text = "Add"
+        Me.AddPoster.UseVisualStyleBackColor = True
+        '
+        'AddBanner
+        '
+        Me.AddBanner.Location = New System.Drawing.Point(547, 422)
+        Me.AddBanner.Name = "AddBanner"
+        Me.AddBanner.Size = New System.Drawing.Size(39, 21)
+        Me.AddBanner.TabIndex = 26
+        Me.AddBanner.Text = "Add"
+        Me.AddBanner.UseVisualStyleBackColor = True
+        '
         'TVPosterSelect
         '
         Me.TVPosterSelect.Location = New System.Drawing.Point(235, 612)
         Me.TVPosterSelect.Name = "TVPosterSelect"
-        Me.TVPosterSelect.Size = New System.Drawing.Size(107, 23)
+        Me.TVPosterSelect.Size = New System.Drawing.Size(98, 23)
         Me.TVPosterSelect.TabIndex = 25
-        Me.TVPosterSelect.Text = "Select for PTVL"
+        Me.TVPosterSelect.Text = "Save image"
         Me.TVPosterSelect.UseVisualStyleBackColor = True
         '
         'TVBannerSelect
         '
-        Me.TVBannerSelect.Location = New System.Drawing.Point(243, 422)
+        Me.TVBannerSelect.Location = New System.Drawing.Point(235, 420)
         Me.TVBannerSelect.Name = "TVBannerSelect"
-        Me.TVBannerSelect.Size = New System.Drawing.Size(107, 23)
+        Me.TVBannerSelect.Size = New System.Drawing.Size(98, 23)
         Me.TVBannerSelect.TabIndex = 24
-        Me.TVBannerSelect.Text = "Select for PTVL"
+        Me.TVBannerSelect.Text = "Save image"
         Me.TVBannerSelect.UseVisualStyleBackColor = True
         '
         'TVBannerPictureBox
@@ -446,6 +458,7 @@ Partial Class Form1
         'TabPage5
         '
         Me.TabPage5.BackColor = System.Drawing.Color.Gray
+        Me.TabPage5.Controls.Add(Me.AddMoviePosterButton)
         Me.TabPage5.Controls.Add(Me.MoviePosterSelect)
         Me.TabPage5.Controls.Add(Me.Label19)
         Me.TabPage5.Controls.Add(Me.ListMoviePosters)
@@ -467,11 +480,20 @@ Partial Class Form1
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Movies"
         '
+        'AddMoviePosterButton
+        '
+        Me.AddMoviePosterButton.Location = New System.Drawing.Point(492, 586)
+        Me.AddMoviePosterButton.Name = "AddMoviePosterButton"
+        Me.AddMoviePosterButton.Size = New System.Drawing.Size(39, 23)
+        Me.AddMoviePosterButton.TabIndex = 29
+        Me.AddMoviePosterButton.Text = "Add"
+        Me.AddMoviePosterButton.UseVisualStyleBackColor = True
+        '
         'MoviePosterSelect
         '
-        Me.MoviePosterSelect.Location = New System.Drawing.Point(249, 496)
+        Me.MoviePosterSelect.Location = New System.Drawing.Point(244, 586)
         Me.MoviePosterSelect.Name = "MoviePosterSelect"
-        Me.MoviePosterSelect.Size = New System.Drawing.Size(107, 23)
+        Me.MoviePosterSelect.Size = New System.Drawing.Size(99, 23)
         Me.MoviePosterSelect.TabIndex = 28
         Me.MoviePosterSelect.Text = "Select for PTVL"
         Me.MoviePosterSelect.UseVisualStyleBackColor = True
@@ -492,7 +514,7 @@ Partial Class Form1
         Me.ListMoviePosters.FormattingEnabled = True
         Me.ListMoviePosters.Location = New System.Drawing.Point(244, 330)
         Me.ListMoviePosters.Name = "ListMoviePosters"
-        Me.ListMoviePosters.Size = New System.Drawing.Size(285, 160)
+        Me.ListMoviePosters.Size = New System.Drawing.Size(285, 251)
         Me.ListMoviePosters.TabIndex = 26
         '
         'Button18
@@ -599,9 +621,9 @@ Partial Class Form1
         '
         'MoviePicture
         '
-        Me.MoviePicture.Location = New System.Drawing.Point(593, 67)
+        Me.MoviePicture.Location = New System.Drawing.Point(573, 67)
         Me.MoviePicture.Name = "MoviePicture"
-        Me.MoviePicture.Size = New System.Drawing.Size(384, 542)
+        Me.MoviePicture.Size = New System.Drawing.Size(404, 542)
         Me.MoviePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.MoviePicture.TabIndex = 13
         Me.MoviePicture.TabStop = False
@@ -749,11 +771,12 @@ Partial Class Form1
         'TabPage4
         '
         Me.TabPage4.BackColor = System.Drawing.Color.Gray
+        Me.TabPage4.Controls.Add(Me.GDataDemoLink)
+        Me.TabPage4.Controls.Add(Me.SubChannelType)
         Me.TabPage4.Controls.Add(Me.SortTypeBox)
         Me.TabPage4.Controls.Add(Me.SortType)
         Me.TabPage4.Controls.Add(Me.MediaLimitBox)
         Me.TabPage4.Controls.Add(Me.MediaLimit)
-        Me.TabPage4.Controls.Add(Me.RefreshButton)
         Me.TabPage4.Controls.Add(Me.ShowDescBox)
         Me.TabPage4.Controls.Add(Me.ShowDesc)
         Me.TabPage4.Controls.Add(Me.ShowTitleBox)
@@ -802,11 +825,34 @@ Partial Class Form1
         Me.TabPage4.Controls.Add(Me.Label5)
         Me.TabPage4.Controls.Add(Me.PlayListType)
         Me.TabPage4.Controls.Add(Me.TVGuideList)
+        Me.TabPage4.ForeColor = System.Drawing.SystemColors.ControlText
         Me.TabPage4.Location = New System.Drawing.Point(4, 22)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Size = New System.Drawing.Size(992, 662)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "TV Guide"
+        '
+        'GDataDemoLink
+        '
+        Me.GDataDemoLink.AutoSize = True
+        Me.GDataDemoLink.Location = New System.Drawing.Point(444, 89)
+        Me.GDataDemoLink.Name = "GDataDemoLink"
+        Me.GDataDemoLink.Size = New System.Drawing.Size(69, 13)
+        Me.GDataDemoLink.TabIndex = 56
+        Me.GDataDemoLink.TabStop = True
+        Me.GDataDemoLink.Text = "GData Demo"
+        Me.GDataDemoLink.Visible = False
+        '
+        'SubChannelType
+        '
+        Me.SubChannelType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.SubChannelType.FormattingEnabled = True
+        Me.SubChannelType.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.SubChannelType.Location = New System.Drawing.Point(227, 86)
+        Me.SubChannelType.Name = "SubChannelType"
+        Me.SubChannelType.Size = New System.Drawing.Size(211, 21)
+        Me.SubChannelType.TabIndex = 55
+        Me.SubChannelType.Visible = False
         '
         'SortTypeBox
         '
@@ -814,7 +860,7 @@ Partial Class Form1
         Me.SortTypeBox.FormattingEnabled = True
         Me.SortTypeBox.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.SortTypeBox.Items.AddRange(New Object() {"Default", "Random", "Reverse"})
-        Me.SortTypeBox.Location = New System.Drawing.Point(522, 227)
+        Me.SortTypeBox.Location = New System.Drawing.Point(522, 222)
         Me.SortTypeBox.Name = "SortTypeBox"
         Me.SortTypeBox.Size = New System.Drawing.Size(103, 21)
         Me.SortTypeBox.TabIndex = 54
@@ -824,7 +870,7 @@ Partial Class Form1
         '
         Me.SortType.AutoSize = True
         Me.SortType.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!)
-        Me.SortType.Location = New System.Drawing.Point(522, 206)
+        Me.SortType.Location = New System.Drawing.Point(518, 201)
         Me.SortType.Name = "SortType"
         Me.SortType.Size = New System.Drawing.Size(93, 20)
         Me.SortType.TabIndex = 53
@@ -854,18 +900,9 @@ Partial Class Form1
         Me.MediaLimit.Text = "Limit:"
         Me.MediaLimit.Visible = False
         '
-        'RefreshButton
-        '
-        Me.RefreshButton.Location = New System.Drawing.Point(546, 18)
-        Me.RefreshButton.Name = "RefreshButton"
-        Me.RefreshButton.Size = New System.Drawing.Size(80, 22)
-        Me.RefreshButton.TabIndex = 50
-        Me.RefreshButton.Text = "Refresh"
-        Me.RefreshButton.UseVisualStyleBackColor = True
-        '
         'ShowDescBox
         '
-        Me.ShowDescBox.Location = New System.Drawing.Point(158, 249)
+        Me.ShowDescBox.Location = New System.Drawing.Point(158, 247)
         Me.ShowDescBox.Name = "ShowDescBox"
         Me.ShowDescBox.Size = New System.Drawing.Size(468, 20)
         Me.ShowDescBox.TabIndex = 49
@@ -886,7 +923,7 @@ Partial Class Form1
         '
         Me.ShowTitleBox.Location = New System.Drawing.Point(157, 203)
         Me.ShowTitleBox.Name = "ShowTitleBox"
-        Me.ShowTitleBox.Size = New System.Drawing.Size(143, 20)
+        Me.ShowTitleBox.Size = New System.Drawing.Size(129, 20)
         Me.ShowTitleBox.TabIndex = 47
         Me.ShowTitleBox.Visible = False
         '
@@ -915,9 +952,9 @@ Partial Class Form1
         '
         'StrmUrlBox
         '
-        Me.StrmUrlBox.Location = New System.Drawing.Point(332, 144)
+        Me.StrmUrlBox.Location = New System.Drawing.Point(267, 144)
         Me.StrmUrlBox.Name = "StrmUrlBox"
-        Me.StrmUrlBox.Size = New System.Drawing.Size(309, 20)
+        Me.StrmUrlBox.Size = New System.Drawing.Size(374, 20)
         Me.StrmUrlBox.TabIndex = 44
         Me.StrmUrlBox.Visible = False
         '
@@ -926,11 +963,11 @@ Partial Class Form1
         Me.StrmUrl.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.StrmUrl.AutoSize = True
         Me.StrmUrl.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!)
-        Me.StrmUrl.Location = New System.Drawing.Point(155, 142)
+        Me.StrmUrl.Location = New System.Drawing.Point(154, 142)
         Me.StrmUrl.Name = "StrmUrl"
-        Me.StrmUrl.Size = New System.Drawing.Size(95, 20)
+        Me.StrmUrl.Size = New System.Drawing.Size(106, 20)
         Me.StrmUrl.TabIndex = 43
-        Me.StrmUrl.Text = "Stream Url:"
+        Me.StrmUrl.Text = "Source Path:"
         Me.StrmUrl.Visible = False
         '
         'TVGuideSubMenu
@@ -1057,7 +1094,7 @@ Partial Class Form1
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(777, 270)
+        Me.Label12.Location = New System.Drawing.Point(797, 270)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(135, 13)
         Me.Label12.TabIndex = 30
@@ -1076,7 +1113,7 @@ Partial Class Form1
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(621, 270)
+        Me.Label11.Location = New System.Drawing.Point(620, 270)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(102, 13)
         Me.Label11.TabIndex = 28
@@ -1103,19 +1140,19 @@ Partial Class Form1
         '
         'ResetDays
         '
-        Me.ResetDays.Location = New System.Drawing.Point(913, 125)
+        Me.ResetDays.Location = New System.Drawing.Point(862, 149)
         Me.ResetDays.Name = "ResetDays"
-        Me.ResetDays.Size = New System.Drawing.Size(45, 20)
+        Me.ResetDays.Size = New System.Drawing.Size(112, 20)
         Me.ResetDays.TabIndex = 25
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(860, 109)
+        Me.Label10.Location = New System.Drawing.Point(860, 132)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(75, 13)
+        Me.Label10.Size = New System.Drawing.Size(115, 13)
         Me.Label10.TabIndex = 24
-        Me.Label10.Text = "Reset Every X"
+        Me.Label10.Text = "Reset Every X Minutes"
         '
         'ChannelName
         '
@@ -1284,9 +1321,9 @@ Partial Class Form1
         '
         'PlayListLocation
         '
-        Me.PlayListLocation.Location = New System.Drawing.Point(277, 120)
+        Me.PlayListLocation.Location = New System.Drawing.Point(267, 120)
         Me.PlayListLocation.Name = "PlayListLocation"
-        Me.PlayListLocation.Size = New System.Drawing.Size(284, 20)
+        Me.PlayListLocation.Size = New System.Drawing.Size(315, 20)
         Me.PlayListLocation.TabIndex = 5
         Me.PlayListLocation.Visible = False
         '
@@ -1318,8 +1355,8 @@ Partial Class Form1
         '
         Me.PlayListType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.PlayListType.FormattingEnabled = True
-        Me.PlayListType.Items.AddRange(New Object() {"Playlist", "TV Network", "Movie Studio", "TV Genre", "Movie Genre", "Mixed Genre (Tv & Movie)", "TV Show", "Directory", "LiveTV XML", "IPTV", "YouTubeTV", "RSS", "Blank", "Music Videos", "Extras (BTP or Cinema Exp)", "Direct Plugin or Super Favs", "Direct Playon"})
-        Me.PlayListType.Location = New System.Drawing.Point(227, 59)
+        Me.PlayListType.Items.AddRange(New Object() {"Playlist", "TV Network", "Movie Studio", "TV Genre", "Movie Genre", "Mixed Genre (TV & Movie)", "TV Show", "Directory", "LiveTV", "InternetTV", "YouTubeTV", "RSS", "Music (WIP)", "Music Videos (WIP)", "Extras (VIP Exclusive)", "Direct Plugin", "Direct Playon"})
+        Me.PlayListType.Location = New System.Drawing.Point(227, 61)
         Me.PlayListType.Name = "PlayListType"
         Me.PlayListType.Size = New System.Drawing.Size(211, 21)
         Me.PlayListType.TabIndex = 2
@@ -1335,72 +1372,6 @@ Partial Class Form1
         Me.TVGuideList.TabIndex = 1
         Me.TVGuideList.UseCompatibleStateImageBehavior = False
         Me.TVGuideList.View = System.Windows.Forms.View.Details
-        '
-        'TabPage6
-        '
-        Me.TabPage6.BackColor = System.Drawing.Color.Gray
-        Me.TabPage6.Controls.Add(Me.YouTubeThumbnailUrlBox)
-        Me.TabPage6.Controls.Add(Me.YouTubeThumbnailUrlLabel)
-        Me.TabPage6.Controls.Add(Me.YouTubeArtistBox)
-        Me.TabPage6.Controls.Add(Me.YouTubeArtistLabel)
-        Me.TabPage6.Controls.Add(Me.YouTubeUrlBox)
-        Me.TabPage6.Controls.Add(Me.YouTubeUrlLabel)
-        Me.TabPage6.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage6.Name = "TabPage6"
-        Me.TabPage6.Size = New System.Drawing.Size(992, 662)
-        Me.TabPage6.TabIndex = 5
-        Me.TabPage6.Text = "Music Videos"
-        '
-        'YouTubeThumbnailUrlBox
-        '
-        Me.YouTubeThumbnailUrlBox.Location = New System.Drawing.Point(12, 106)
-        Me.YouTubeThumbnailUrlBox.Name = "YouTubeThumbnailUrlBox"
-        Me.YouTubeThumbnailUrlBox.Size = New System.Drawing.Size(273, 20)
-        Me.YouTubeThumbnailUrlBox.TabIndex = 5
-        '
-        'YouTubeThumbnailUrlLabel
-        '
-        Me.YouTubeThumbnailUrlLabel.AutoSize = True
-        Me.YouTubeThumbnailUrlLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
-        Me.YouTubeThumbnailUrlLabel.Location = New System.Drawing.Point(8, 79)
-        Me.YouTubeThumbnailUrlLabel.Name = "YouTubeThumbnailUrlLabel"
-        Me.YouTubeThumbnailUrlLabel.Size = New System.Drawing.Size(133, 24)
-        Me.YouTubeThumbnailUrlLabel.TabIndex = 4
-        Me.YouTubeThumbnailUrlLabel.Text = "Thumbnail Url:"
-        '
-        'YouTubeArtistBox
-        '
-        Me.YouTubeArtistBox.Location = New System.Drawing.Point(337, 44)
-        Me.YouTubeArtistBox.Name = "YouTubeArtistBox"
-        Me.YouTubeArtistBox.Size = New System.Drawing.Size(273, 20)
-        Me.YouTubeArtistBox.TabIndex = 3
-        '
-        'YouTubeArtistLabel
-        '
-        Me.YouTubeArtistLabel.AutoSize = True
-        Me.YouTubeArtistLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
-        Me.YouTubeArtistLabel.Location = New System.Drawing.Point(333, 17)
-        Me.YouTubeArtistLabel.Name = "YouTubeArtistLabel"
-        Me.YouTubeArtistLabel.Size = New System.Drawing.Size(55, 24)
-        Me.YouTubeArtistLabel.TabIndex = 2
-        Me.YouTubeArtistLabel.Text = "Artist:"
-        '
-        'YouTubeUrlBox
-        '
-        Me.YouTubeUrlBox.Location = New System.Drawing.Point(12, 44)
-        Me.YouTubeUrlBox.Name = "YouTubeUrlBox"
-        Me.YouTubeUrlBox.Size = New System.Drawing.Size(273, 20)
-        Me.YouTubeUrlBox.TabIndex = 1
-        '
-        'YouTubeUrlLabel
-        '
-        Me.YouTubeUrlLabel.AutoSize = True
-        Me.YouTubeUrlLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
-        Me.YouTubeUrlLabel.Location = New System.Drawing.Point(8, 17)
-        Me.YouTubeUrlLabel.Name = "YouTubeUrlLabel"
-        Me.YouTubeUrlLabel.Size = New System.Drawing.Size(122, 24)
-        Me.YouTubeUrlLabel.TabIndex = 0
-        Me.YouTubeUrlLabel.Text = "YouTube Url:"
         '
         'StatusStrip1
         '
@@ -1434,7 +1405,7 @@ Partial Class Form1
         'FileToolStripMenuItem
         '
         Me.FileToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AaaToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AaaToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopLeft
         Me.FileToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
@@ -1448,27 +1419,15 @@ Partial Class Form1
         Me.AaaToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.AaaToolStripMenuItem.Text = "Settings"
         '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.ExitToolStripMenuItem.Text = "Exit"
+        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'AddBanner
-        '
-        Me.AddBanner.Location = New System.Drawing.Point(547, 422)
-        Me.AddBanner.Name = "AddBanner"
-        Me.AddBanner.Size = New System.Drawing.Size(39, 21)
-        Me.AddBanner.TabIndex = 26
-        Me.AddBanner.Text = "Add"
-        Me.AddBanner.UseVisualStyleBackColor = True
-        '
-        'AddPoster
-        '
-        Me.AddPoster.Location = New System.Drawing.Point(547, 612)
-        Me.AddPoster.Name = "AddPoster"
-        Me.AddPoster.Size = New System.Drawing.Size(39, 21)
-        Me.AddPoster.TabIndex = 27
-        Me.AddPoster.Text = "Add"
-        Me.AddPoster.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -1498,8 +1457,6 @@ Partial Class Form1
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
         Me.ContextMenuStrip1.ResumeLayout(False)
-        Me.TabPage6.ResumeLayout(False)
-        Me.TabPage6.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
@@ -1611,7 +1568,6 @@ Partial Class Form1
     Friend WithEvents ShowTitle As System.Windows.Forms.Label
     Friend WithEvents ShowDescBox As System.Windows.Forms.TextBox
     Friend WithEvents ShowDesc As System.Windows.Forms.Label
-    Friend WithEvents RefreshButton As System.Windows.Forms.Button
     Friend WithEvents MediaLimit As System.Windows.Forms.Label
     Friend WithEvents MediaLimitBox As System.Windows.Forms.ComboBox
     Friend WithEvents SortTypeBox As System.Windows.Forms.ComboBox
@@ -1625,15 +1581,12 @@ Partial Class Form1
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents TVPosterSelect As System.Windows.Forms.Button
     Friend WithEvents TVBannerSelect As System.Windows.Forms.Button
-    Friend WithEvents TabPage6 As System.Windows.Forms.TabPage
     Friend WithEvents MoviePosterSelect As System.Windows.Forms.Button
-    Friend WithEvents YouTubeArtistBox As System.Windows.Forms.TextBox
-    Friend WithEvents YouTubeArtistLabel As System.Windows.Forms.Label
-    Friend WithEvents YouTubeUrlBox As System.Windows.Forms.TextBox
-    Friend WithEvents YouTubeUrlLabel As System.Windows.Forms.Label
-    Friend WithEvents YouTubeThumbnailUrlBox As System.Windows.Forms.TextBox
-    Friend WithEvents YouTubeThumbnailUrlLabel As System.Windows.Forms.Label
     Friend WithEvents AddPoster As System.Windows.Forms.Button
     Friend WithEvents AddBanner As System.Windows.Forms.Button
+    Friend WithEvents AddMoviePosterButton As System.Windows.Forms.Button
+    Friend WithEvents SubChannelType As System.Windows.Forms.ComboBox
+    Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents GDataDemoLink As System.Windows.Forms.LinkLabel
 
 End Class

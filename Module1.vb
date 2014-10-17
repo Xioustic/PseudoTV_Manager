@@ -1,6 +1,6 @@
 ﻿Imports System
 Imports System.IO
-Imports System.Data.SQLite
+Imports System.Data
 Imports MySql.Data.MySqlClient
 
 Module Module1
@@ -26,16 +26,17 @@ Module Module1
 
         Dim ArrayResponse() As String = {""}
 
+
         If Form1.DatabaseType = 0 Then
             'This is a standard, SQLite database.
             Dim SQLconnect As New SQLite.SQLiteConnection()
-            Dim SQLcommand As SQLiteCommand = Nothing
+            Dim SQLcommand As SQLite.SQLiteCommand = Nothing
             SQLconnect.ConnectionString = "Data Source=" & Form1.VideoDatabaseLocation
             Try
                 SQLconnect.Open()
                 SQLcommand = SQLconnect.CreateCommand
                 SQLcommand.CommandText = SQLStatement
-                Dim SQLreader As SQLiteDataReader = SQLcommand.ExecuteReader()
+                Dim SQLreader As SQLite.SQLiteDataReader = SQLcommand.ExecuteReader()
 
                 Dim x As Integer = 0
 
@@ -119,7 +120,7 @@ Module Module1
             'These are standard SQLite databases.
             'Open the connection.
             Dim SQLconnect As New SQLite.SQLiteConnection()
-            Dim SQLcommand As SQLiteCommand = Nothing
+            Dim SQLcommand As SQLite.SQLiteCommand = Nothing
             SQLconnect.ConnectionString = "Data Source=" & Form1.VideoDatabaseLocation
 
             Try

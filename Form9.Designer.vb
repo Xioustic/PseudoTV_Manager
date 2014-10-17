@@ -29,6 +29,7 @@ Partial Class Form9
         Me.AddBannerViewButton = New System.Windows.Forms.Button()
         Me.AddBannerReturnString = New System.Windows.Forms.TextBox()
         Me.AddBannerStatus = New System.Windows.Forms.Label()
+        Me.AddBannerInfo = New System.Windows.Forms.Label()
         CType(Me.AddBannerPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -47,6 +48,7 @@ Partial Class Form9
         Me.AddBannerAddButton.TabIndex = 1
         Me.AddBannerAddButton.Text = "Add"
         Me.AddBannerAddButton.UseVisualStyleBackColor = True
+        Me.AddBannerAddButton.Visible = False
         '
         'AddBannerCloseButton
         '
@@ -93,11 +95,23 @@ Partial Class Form9
         Me.AddBannerStatus.Size = New System.Drawing.Size(0, 13)
         Me.AddBannerStatus.TabIndex = 7
         '
+        'AddBannerInfo
+        '
+        Me.AddBannerInfo.AutoSize = True
+        Me.AddBannerInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.AddBannerInfo.Location = New System.Drawing.Point(186, 39)
+        Me.AddBannerInfo.Name = "AddBannerInfo"
+        Me.AddBannerInfo.Size = New System.Drawing.Size(345, 24)
+        Me.AddBannerInfo.TabIndex = 8
+        Me.AddBannerInfo.Text = "Paste a link from the web, and click view"
+        Me.AddBannerInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Form9
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(781, 300)
+        Me.Controls.Add(Me.AddBannerInfo)
         Me.Controls.Add(Me.AddBannerStatus)
         Me.Controls.Add(Me.AddBannerReturnString)
         Me.Controls.Add(Me.AddBannerViewButton)
@@ -119,4 +133,5 @@ Partial Class Form9
     Friend WithEvents AddBannerViewButton As System.Windows.Forms.Button
     Friend WithEvents AddBannerReturnString As System.Windows.Forms.TextBox
     Friend WithEvents AddBannerStatus As System.Windows.Forms.Label
+    Friend WithEvents AddBannerInfo As System.Windows.Forms.Label
 End Class

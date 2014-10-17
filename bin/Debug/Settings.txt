@@ -1,1 +1,1 @@
-1 | server=192.168.0.51; user id=xbmc3; password=xbmc; database=myvideos78; port=3306 | D:\XBMC\portable_data\userdata\addon_data\script.pseudotv.live\settings2.xml
+1 | server=192.168.0.51; user id=xbmc; password=xbmc; database=myvideos78; port= | \\Ksg-htpc\xbmc\portable_data\userdata\addon_data\script.pseudotv.live\settings2.xml

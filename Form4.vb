@@ -18,12 +18,17 @@
 
         If IsNumeric(TextBox2.Text) = False Then
             Errornum = True
-            MsgBox("Please enter a valid minimum interleave count")
+            MsgBox("Please enter a valid maximum interleave count")
         End If
 
         If IsNumeric(TextBox3.Text) = False Then
             Errornum = True
             MsgBox("Please enter a valid starting episode number")
+        End If
+
+        If IsNumeric(TextBox4.Text) = False Then
+            Errornum = True
+            MsgBox("Please enter a valid # of episode between shows")
         End If
 
         If ComboBox1.SelectedIndex = -1 Then
@@ -38,6 +43,7 @@
             str(1) = TextBox1.Text
             str(2) = TextBox2.Text
             str(3) = TextBox3.Text
+            str(4) = TextBox4.Text
 
             Dim itm As ListViewItem
             itm = New ListViewItem(str)
@@ -47,8 +53,18 @@
             TextBox1.Text = ""
             TextBox2.Text = ""
             TextBox3.Text = ""
+            TextBox4.Text = ""
             ComboBox1.Text = ""
             Me.Visible = False
         End If
     End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+
+    End Sub
+
 End Class
