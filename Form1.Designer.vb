@@ -1355,7 +1355,7 @@ Partial Class Form1
         '
         Me.PlayListType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.PlayListType.FormattingEnabled = True
-        Me.PlayListType.Items.AddRange(New Object() {"Playlist", "TV Network", "Movie Studio", "TV Genre", "Movie Genre", "Mixed Genre (TV & Movie)", "TV Show", "Directory", "LiveTV", "InternetTV", "YouTubeTV", "RSS", "Music (WIP)", "Music Videos (WIP)", "Extras (VIP Exclusive)", "Direct Plugin", "Direct Playon"})
+        Me.PlayListType.Items.AddRange(New Object() {"Playlist", "TV Network", "Movie Studio", "TV Genre", "Movie Genre", "Mixed Genre (TV & Movie)", "TV Show", "Directory", "LiveTV", "InternetTV", "YouTubeTV", "RSS", "Music (WIP)", "Music Videos", "Extras (VIP Exclusive)", "Direct Plugin (WIP)", "Direct Playon (WIP)"})
         Me.PlayListType.Location = New System.Drawing.Point(227, 61)
         Me.PlayListType.Name = "PlayListType"
         Me.PlayListType.Size = New System.Drawing.Size(211, 21)
