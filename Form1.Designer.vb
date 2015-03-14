@@ -82,7 +82,6 @@ Partial Class Form1
         Me.GenresListSubList = New System.Windows.Forms.ListBox()
         Me.GenresList = New System.Windows.Forms.ListView()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.GDataDemoLink = New System.Windows.Forms.LinkLabel()
         Me.SubChannelType = New System.Windows.Forms.ComboBox()
         Me.SortTypeBox = New System.Windows.Forms.ComboBox()
         Me.SortType = New System.Windows.Forms.Label()
@@ -146,6 +145,7 @@ Partial Class Form1
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.GDataDemoLink = New System.Windows.Forms.LinkLabel()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.TVBannerPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -238,7 +238,7 @@ Partial Class Form1
         Me.TVPosterSelect.Name = "TVPosterSelect"
         Me.TVPosterSelect.Size = New System.Drawing.Size(98, 23)
         Me.TVPosterSelect.TabIndex = 25
-        Me.TVPosterSelect.Text = "Save image"
+        Me.TVPosterSelect.Text = "Select for PTVL"
         Me.TVPosterSelect.UseVisualStyleBackColor = True
         '
         'TVBannerSelect
@@ -247,7 +247,7 @@ Partial Class Form1
         Me.TVBannerSelect.Name = "TVBannerSelect"
         Me.TVBannerSelect.Size = New System.Drawing.Size(98, 23)
         Me.TVBannerSelect.TabIndex = 24
-        Me.TVBannerSelect.Text = "Save image"
+        Me.TVBannerSelect.Text = "Select for PTVL"
         Me.TVBannerSelect.UseVisualStyleBackColor = True
         '
         'TVBannerPictureBox
@@ -832,17 +832,6 @@ Partial Class Form1
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "TV Guide"
         '
-        'GDataDemoLink
-        '
-        Me.GDataDemoLink.AutoSize = True
-        Me.GDataDemoLink.Location = New System.Drawing.Point(444, 89)
-        Me.GDataDemoLink.Name = "GDataDemoLink"
-        Me.GDataDemoLink.Size = New System.Drawing.Size(69, 13)
-        Me.GDataDemoLink.TabIndex = 56
-        Me.GDataDemoLink.TabStop = True
-        Me.GDataDemoLink.Text = "GData Demo"
-        Me.GDataDemoLink.Visible = False
-        '
         'SubChannelType
         '
         Me.SubChannelType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -902,7 +891,7 @@ Partial Class Form1
         '
         'ShowDescBox
         '
-        Me.ShowDescBox.Location = New System.Drawing.Point(158, 247)
+        Me.ShowDescBox.Location = New System.Drawing.Point(158, 249)
         Me.ShowDescBox.Name = "ShowDescBox"
         Me.ShowDescBox.Size = New System.Drawing.Size(468, 20)
         Me.ShowDescBox.TabIndex = 49
@@ -923,7 +912,7 @@ Partial Class Form1
         '
         Me.ShowTitleBox.Location = New System.Drawing.Point(157, 203)
         Me.ShowTitleBox.Name = "ShowTitleBox"
-        Me.ShowTitleBox.Size = New System.Drawing.Size(129, 20)
+        Me.ShowTitleBox.Size = New System.Drawing.Size(143, 20)
         Me.ShowTitleBox.TabIndex = 47
         Me.ShowTitleBox.Visible = False
         '
@@ -952,9 +941,9 @@ Partial Class Form1
         '
         'StrmUrlBox
         '
-        Me.StrmUrlBox.Location = New System.Drawing.Point(267, 144)
+        Me.StrmUrlBox.Location = New System.Drawing.Point(332, 144)
         Me.StrmUrlBox.Name = "StrmUrlBox"
-        Me.StrmUrlBox.Size = New System.Drawing.Size(374, 20)
+        Me.StrmUrlBox.Size = New System.Drawing.Size(309, 20)
         Me.StrmUrlBox.TabIndex = 44
         Me.StrmUrlBox.Visible = False
         '
@@ -963,11 +952,11 @@ Partial Class Form1
         Me.StrmUrl.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.StrmUrl.AutoSize = True
         Me.StrmUrl.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!)
-        Me.StrmUrl.Location = New System.Drawing.Point(154, 142)
+        Me.StrmUrl.Location = New System.Drawing.Point(155, 142)
         Me.StrmUrl.Name = "StrmUrl"
-        Me.StrmUrl.Size = New System.Drawing.Size(106, 20)
+        Me.StrmUrl.Size = New System.Drawing.Size(95, 20)
         Me.StrmUrl.TabIndex = 43
-        Me.StrmUrl.Text = "Source Path:"
+        Me.StrmUrl.Text = "Stream Url:"
         Me.StrmUrl.Visible = False
         '
         'TVGuideSubMenu
@@ -1094,7 +1083,7 @@ Partial Class Form1
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(797, 270)
+        Me.Label12.Location = New System.Drawing.Point(777, 270)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(135, 13)
         Me.Label12.TabIndex = 30
@@ -1113,7 +1102,7 @@ Partial Class Form1
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(620, 270)
+        Me.Label11.Location = New System.Drawing.Point(621, 270)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(102, 13)
         Me.Label11.TabIndex = 28
@@ -1140,19 +1129,19 @@ Partial Class Form1
         '
         'ResetDays
         '
-        Me.ResetDays.Location = New System.Drawing.Point(862, 149)
+        Me.ResetDays.Location = New System.Drawing.Point(913, 125)
         Me.ResetDays.Name = "ResetDays"
-        Me.ResetDays.Size = New System.Drawing.Size(112, 20)
+        Me.ResetDays.Size = New System.Drawing.Size(45, 20)
         Me.ResetDays.TabIndex = 25
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(860, 132)
+        Me.Label10.Location = New System.Drawing.Point(860, 109)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(115, 13)
+        Me.Label10.Size = New System.Drawing.Size(75, 13)
         Me.Label10.TabIndex = 24
-        Me.Label10.Text = "Reset Every X Minutes"
+        Me.Label10.Text = "Reset Every X"
         '
         'ChannelName
         '
@@ -1321,9 +1310,9 @@ Partial Class Form1
         '
         'PlayListLocation
         '
-        Me.PlayListLocation.Location = New System.Drawing.Point(267, 120)
+        Me.PlayListLocation.Location = New System.Drawing.Point(277, 120)
         Me.PlayListLocation.Name = "PlayListLocation"
-        Me.PlayListLocation.Size = New System.Drawing.Size(315, 20)
+        Me.PlayListLocation.Size = New System.Drawing.Size(284, 20)
         Me.PlayListLocation.TabIndex = 5
         Me.PlayListLocation.Visible = False
         '
@@ -1355,8 +1344,8 @@ Partial Class Form1
         '
         Me.PlayListType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.PlayListType.FormattingEnabled = True
-        Me.PlayListType.Items.AddRange(New Object() {"Playlist", "TV Network", "Movie Studio", "TV Genre", "Movie Genre", "Mixed Genre (TV & Movie)", "TV Show", "Directory", "LiveTV", "InternetTV", "YouTubeTV", "RSS", "Music (WIP)", "Music Videos", "Extras (VIP Exclusive)", "Direct Plugin (WIP)", "Direct Playon (WIP)"})
-        Me.PlayListType.Location = New System.Drawing.Point(227, 61)
+        Me.PlayListType.Items.AddRange(New Object() {"Playlist", "TV Network", "Movie Studio", "TV Genre", "Movie Genre", "Mixed Genre (Tv & Movie)", "TV Show", "Directory", "LiveTV XML", "IPTV", "YouTubeTV", "RSS", "Blank", "Music Videos", "Extras (BTP or Cinema Exp)", "Direct Plugin or Super Favs", "Direct Playon"})
+        Me.PlayListType.Location = New System.Drawing.Point(227, 59)
         Me.PlayListType.Name = "PlayListType"
         Me.PlayListType.Size = New System.Drawing.Size(211, 21)
         Me.PlayListType.TabIndex = 2
@@ -1416,18 +1405,29 @@ Partial Class Form1
         'AaaToolStripMenuItem
         '
         Me.AaaToolStripMenuItem.Name = "AaaToolStripMenuItem"
-        Me.AaaToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.AaaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AaaToolStripMenuItem.Text = "Settings"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
+        'GDataDemoLink
+        '
+        Me.GDataDemoLink.AutoSize = True
+        Me.GDataDemoLink.Location = New System.Drawing.Point(444, 89)
+        Me.GDataDemoLink.Name = "GDataDemoLink"
+        Me.GDataDemoLink.Size = New System.Drawing.Size(69, 13)
+        Me.GDataDemoLink.TabIndex = 56
+        Me.GDataDemoLink.TabStop = True
+        Me.GDataDemoLink.Text = "GData Demo"
+        Me.GDataDemoLink.Visible = False
         '
         'Form1
         '

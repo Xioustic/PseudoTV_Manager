@@ -15,6 +15,22 @@ PseudoTVManager
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
+</member><member name="P:PseudoTV_Manager.My.Resources.Resources.banner">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PseudoTV_Manager.My.Resources.Resources.Donate">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PseudoTV_Manager.My.Resources.Resources.DonateButton">
+	<summary>
+  Looks up a localized string similar to .
+</summary>
+</member><member name="P:PseudoTV_Manager.My.Resources.Resources.poster">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="T:PseudoTV_Manager.My.Resources.Resources">
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.

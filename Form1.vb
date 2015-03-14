@@ -397,7 +397,6 @@ Public Class Form1
         InterleavedList.Columns.Add("Min", 45, HorizontalAlignment.Left)
         InterleavedList.Columns.Add("Max", 45, HorizontalAlignment.Left)
         InterleavedList.Columns.Add("Epi", 45, HorizontalAlignment.Left)
-        InterleavedList.Columns.Add("Epis", 45, HorizontalAlignment.Left)
 
         SchedulingList.Columns.Add("Chan", 53, HorizontalAlignment.Left)
         SchedulingList.Columns.Add("Days", 45, HorizontalAlignment.Left)
@@ -642,41 +641,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub TVShowList_ColumnClick(ByVal sender As Object, ByVal e As System.Windows.Forms.ColumnClickEventArgs) Handles TVShowList.ColumnClick
-        ' Get the new sorting column. 
-        Dim new_sorting_column As ColumnHeader = TVShowList.Columns(e.Column)
-        ' Figure out the new sorting order. 
-        Dim sort_order As System.Windows.Forms.SortOrder
-        If m_SortingColumn Is Nothing Then
-            ' New column. Sort ascending. 
-            sort_order = SortOrder.Ascending
-        Else ' See if this is the same column. 
-            If new_sorting_column.Equals(m_SortingColumn) Then
-                ' Same column. Switch the sort order. 
-                If m_SortingColumn.Text.StartsWith("> ") Then
-                    sort_order = SortOrder.Descending
-                Else
-                    sort_order = SortOrder.Ascending
-                End If
-            Else
-                ' New column. Sort ascending. 
-                sort_order = SortOrder.Ascending
-            End If
-            ' Remove the old sort indicator. 
-            m_SortingColumn.Text = m_SortingColumn.Text.Substring(2)
-        End If
-        ' Display the new sort order. 
-        m_SortingColumn = new_sorting_column
-        If sort_order = SortOrder.Ascending Then
-            m_SortingColumn.Text = "> " & m_SortingColumn.Text
-        Else
-            m_SortingColumn.Text = "< " & m_SortingColumn.Text
-        End If
-        ' Create a comparer. 
-        TVShowList.ListViewItemSorter = New clsListviewSorter(e.Column, sort_order)
-        ' Sort. 
-        TVShowList.Sort()
-    End Sub
 
     Public Function ConvertGenres(ByVal Genrelist As ListBox)
         'Converts the existing ListTVGenre's contents to the proper format.
@@ -1283,10 +1247,10 @@ Public Class Form1
                     'Directory
                     Option1 = 1
                 ElseIf PlayListNumber = 8 Then
-                    'LiveTV
+                    'LiveTV XML
                     Option1 = 2
                 ElseIf PlayListNumber = 9 Then
-                    'InternetTV
+                    'IPTV
                     Option1 = 3
                 ElseIf PlayListNumber = 10 Or PlayListNumber = 11 Then
                     'YoutubeTV or RSS
@@ -1363,13 +1327,13 @@ Public Class Form1
                             ElseIf RuleValue = 15 And OptionValue = "Yes" Then
                                 ChkLogo.Checked = True
                                 Exit For
-                            ElseIf RuleValue = 14 And OptionValue = "Yes" Then
+                            ElseIf RuleValue = 14 And OptionValue = "No" Then
                                 ChkIceLibrary.Checked = True
                                 Exit For
-                            ElseIf RuleValue = 17 And OptionValue = "Yes" Then
+                            ElseIf RuleValue = 17 And OptionValue = "No" Then
                                 ChkExcludeBCT.Checked = True
                                 Exit For
-                            ElseIf RuleValue = 18 And OptionValue = "Yes" Then
+                            ElseIf RuleValue = 18 And OptionValue = "No" Then
                                 ChkPopup.Checked = True
                                 Exit For
                             ElseIf RuleValue = 2 Then
@@ -1380,7 +1344,7 @@ Public Class Form1
                                 'Object at the end
                                 SubOptions(OptionNum - 1) = OptionValue
 
-                                If OptionNum = 5 Then
+                                If OptionNum = 4 Then
                                     'last option.
                                     'create + insert object
                                     Dim itm As ListViewItem
@@ -1512,14 +1476,14 @@ Public Class Form1
             SubChannelType.Visible = False
         ElseIf PlayListType.SelectedIndex = 8 Then
             Button5.Visible = False
-            Label6.Text = "Channel id:"
+            Label6.Text = "Zap2It Url:"
             Label6.Visible = True
             PlayListLocation.Visible = True
             StrmUrl.Visible = True
             StrmUrlBox.Visible = True
             Option2.Visible = False
             YouTubeType.Visible = False
-            ShowTitle.Text = "XMLTV Filename:"
+            ShowTitle.Text = "Name of XML:"
             ShowTitle.Visible = True
             ShowTitleBox.Visible = True
             ShowDesc.Visible = False
@@ -1531,10 +1495,10 @@ Public Class Form1
             SubChannelType.Visible = False
         ElseIf PlayListType.SelectedIndex = 9 Then
             Button5.Visible = False
-            Label6.Text = "Duration:"
+            Label6.Text = "Run Time:"
             Label6.Visible = True
             PlayListLocation.Visible = True
-            StrmUrl.Text = "Source path:"
+            StrmUrl.Text = "Stream Url:"
             StrmUrl.Visible = True
             StrmUrlBox.Visible = True
             Option2.Visible = False
@@ -1586,7 +1550,7 @@ Public Class Form1
             SubChannelType.Visible = False
         ElseIf PlayListType.SelectedIndex = 11 Then
             Button5.Visible = False
-            Label6.Text = "Source path:"
+            Label6.Text = "Stream Url:"
             Label6.Visible = True
             PlayListLocation.Visible = True
             StrmUrl.Visible = False
@@ -1618,7 +1582,7 @@ Public Class Form1
             SubChannelType.Visible = False
         ElseIf PlayListType.SelectedIndex = 13 Then
             Button5.Visible = False
-            Label6.Text = "LastFM Username:"
+            Label6.Text = "LastFM User:"
             Label6.Visible = True
             PlayListLocation.Visible = True
             StrmUrl.Visible = False
@@ -1968,7 +1932,6 @@ Public Class Form1
                 AppendInfo = AppendInfo & vbCrLf & vbTab & "<setting id=" & Chr(34) & "Channel_" & ChannelNum & "_rule_" & rulecount & "_opt_2" & Chr(34) & " value=" & Chr(34) & InterleavedList.Items(x).SubItems(1).Text & Chr(34) & " />"
                 AppendInfo = AppendInfo & vbCrLf & vbTab & "<setting id=" & Chr(34) & "Channel_" & ChannelNum & "_rule_" & rulecount & "_opt_3" & Chr(34) & " value=" & Chr(34) & InterleavedList.Items(x).SubItems(2).Text & Chr(34) & " />"
                 AppendInfo = AppendInfo & vbCrLf & vbTab & "<setting id=" & Chr(34) & "Channel_" & ChannelNum & "_rule_" & rulecount & "_opt_4" & Chr(34) & " value=" & Chr(34) & InterleavedList.Items(x).SubItems(3).Text & Chr(34) & " />"
-                AppendInfo = AppendInfo & vbCrLf & vbTab & "<setting id=" & Chr(34) & "Channel_" & ChannelNum & "_rule_" & rulecount & "_opt_5" & Chr(34) & " value=" & Chr(34) & InterleavedList.Items(x).SubItems(4).Text & Chr(34) & " />"
             Next
 
             For x = 0 To SchedulingList.Items.Count - 1
@@ -2285,7 +2248,6 @@ Public Class Form1
                     MoviePosterSplit(X) = MoviePosterSplit(X).Substring(i + 1, MoviePosterSplit(X).IndexOf(""">"))
                     ListMoviePosters.Items.Add(MoviePosterSplit(X))
                 Next
-
 
                 Dim MoviePosterSplit2() As String = Split(MoviePoster, "<thumb>")
 
@@ -2652,7 +2614,7 @@ Public Class Form1
                 .Location = New System.Drawing.Point(270, 120)
             End With
         ElseIf PlayListType.SelectedIndex = 13 And SubChannelType.SelectedIndex = 1 Then
-            Label6.Text = "Channel_##:"
+            Label6.Text = "Channel Number:"
             With PlayListLocation
                 .Location = New System.Drawing.Point(295, 120)
             End With
@@ -2698,21 +2660,5 @@ Public Class Form1
     Private Sub GDataDemoLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles GDataDemoLink.LinkClicked
         Dim sInfo As New ProcessStartInfo(e.Link.LinkData.ToString())
         Process.Start(sInfo)
-    End Sub
-
-    Private Sub StrmUrl_Click(sender As Object, e As EventArgs) Handles StrmUrl.Click
-
-    End Sub
-
-    Private Sub Label21_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub InterleavedList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles InterleavedList.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub StrmUrlBox_TextChanged(sender As Object, e As EventArgs) Handles StrmUrlBox.TextChanged
-
     End Sub
 End Class

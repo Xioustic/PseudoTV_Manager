@@ -12,11 +12,6 @@ Option Strict On
 Option Explicit On
 
 
-
-
-
-
-
 Namespace My
     
     'NOTE: This file is auto-generated; do not modify it directly.  To make changes,
@@ -31,8 +26,8 @@ Namespace My
             MyBase.New(Global.Microsoft.VisualBasic.ApplicationServices.AuthenticationMode.ApplicationDefined)
             Me.IsSingleInstance = true
             Me.EnableVisualStyles = true
-            Me.SaveMySettingsOnExit = True
-            Me.ShutdownStyle = Global.Microsoft.VisualBasic.ApplicationServices.ShutdownMode.AfterMainFormCloses
+            Me.SaveMySettingsOnExit = true
+            Me.ShutDownStyle = Global.Microsoft.VisualBasic.ApplicationServices.ShutdownMode.AfterMainFormCloses
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
