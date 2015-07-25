@@ -1,1 +1,0 @@
-0 | C:\Users\pberryman\AppData\Roaming\Kodi\userdata\Database\MyVideos90.db | C:\Users\pberryman\AppData\Roaming\Kodi\userdata\addon_data\script.pseudotv.live\settings2.xml | C:\Users\pberryman\AppData\Roaming\Kodi\userdata\Database\Addons16.db
