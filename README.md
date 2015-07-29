@@ -1,8 +1,6 @@
 PyPTVMan
 ========
-This is a fork of the channel managers built for PseudoTV and PseudoTVLive. 
-
-The intention of this fork is to port the application to Python2 and PyQt4 from Visual Basic. in order to make the application usable cross-platform and decrease overhead for improving and fixing up the code.
+This is a fork of the channel managers built for PseudoTV and PseudoTVLive. The intention of this fork is to port the application to Python2 and PyQt4 from Visual Basic.
 
 Why?
 ====
