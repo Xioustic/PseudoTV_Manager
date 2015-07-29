@@ -13,11 +13,11 @@ Credit
 ======
 Forks of the PseudoTV Manager for PseudoTV Live
 -----------------------------------------------
-Lunatixz - Fork of PseudoTV Manager for PseudoTV Live
-https://github.com/Lunatixz/PseudoTV_Manager
-peppy6582 - Contributor to Lunatixz fork
-https://github.com/peppy6582/PseudoTV_Manager
-ewmanning - Contributor to Lunatixz fork
-https://github.com/ewmanning/PseudoTV_Manager
-Messiadbunny - Original PseudoTV version
-https://github.com/Messiadbunny/PseudoTV_Manager
+Lunatixz - Fork of PseudoTV Manager for PseudoTV Live  
+https://github.com/Lunatixz/PseudoTV_Manager  
+peppy6582 - Contributor to Lunatixz fork  
+https://github.com/peppy6582/PseudoTV_Manager  
+ewmanning - Contributor to Lunatixz fork  
+https://github.com/ewmanning/PseudoTV_Manager  
+Messiadbunny - Original PseudoTV version  
+https://github.com/Messiadbunny/PseudoTV_Manager  
