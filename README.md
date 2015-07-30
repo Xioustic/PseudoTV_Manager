@@ -11,8 +11,6 @@ Why?
 
 Credit
 ======
-Forks of the PseudoTV Manager for PseudoTV Live
------------------------------------------------
 Lunatixz - Fork of PseudoTV Manager for PseudoTV Live  
 https://github.com/Lunatixz/PseudoTV_Manager  
 peppy6582 - Contributor to Lunatixz fork  
